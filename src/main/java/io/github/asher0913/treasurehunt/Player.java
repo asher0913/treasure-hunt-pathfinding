@@ -1,4 +1,4 @@
-package ads.game;
+package io.github.asher0913.treasurehunt;
 
 /**
  * Represents the player in the Treasure Hunt game.

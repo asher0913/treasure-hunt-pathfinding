@@ -9,6 +9,8 @@
     <version>1.0.0</version>
 
     <properties>
+        <!-- the game by default; override with -Dexec.mainClass=... -->
+        <exec.mainClass>io.github.asher0913.treasurehunt.Main</exec.mainClass>
         <maven.compiler.release>21</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>5.11.4</junit.version>
@@ -39,9 +41,6 @@
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.5.0</version>
-                <configuration>
-                    <mainClass>ads.game.Main</mainClass>
-                </configuration>
             </plugin>
         </plugins>
     </build>

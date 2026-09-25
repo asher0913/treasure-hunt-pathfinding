@@ -1,4 +1,4 @@
-package ads.game;
+package io.github.asher0913.treasurehunt;
 
 import java.util.Random;
 
@@ -27,12 +27,26 @@ public class GameMap {
     /**
      * Initialize the map: fill with empty cells, then place obstacles and treasures.
      */
+    private final Random rand;
+
     public GameMap() {
+        this(new Random(), 15, 3);
+    }
+
+    /**
+     * A reproducible board: the same seed, obstacle count and treasure count always give the same map.
+     */
+    public GameMap(long seed, int obstacles, int treasures) {
+        this(new Random(seed), obstacles, treasures);
+    }
+
+    private GameMap(Random rand, int obstacles, int treasures) {
+        this.rand = rand;
         grid     = new char[SIZE][SIZE];
         revealed = new boolean[SIZE][SIZE];
-        initMap();             // set all cells to empty
-        generateObstacles(15); // place 15 random obstacles
-        generateTreasures(3);  // place 3 hidden treasures
+        initMap();                     // set all cells to empty
+        generateObstacles(obstacles);  // place random obstacles
+        generateTreasures(treasures);  // place hidden treasures
     }
 
     /**
@@ -54,7 +68,6 @@ public class GameMap {
      * @param count how many obstacles to add
      */
     private void generateObstacles(int count) {
-        Random rand = new Random();
         int placed = 0;
         while (placed < count) {
             int x = rand.nextInt(SIZE);
@@ -74,7 +87,6 @@ public class GameMap {
      * @param count how many treasures to add
      */
     private void generateTreasures(int count) {
-        Random rand = new Random();
         int placed = 0;
         while (placed < count) {
             int x = rand.nextInt(SIZE);

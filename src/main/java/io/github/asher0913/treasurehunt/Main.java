@@ -1,4 +1,4 @@
-package ads.game;
+package io.github.asher0913.treasurehunt;
 
 import javax.swing.SwingUtilities;
 
